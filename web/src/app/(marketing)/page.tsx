@@ -170,7 +170,7 @@ Keep your responses concise, confident, and smooth.`;
               <h2 className="mb-12 font-display text-3xl font-semibold text-slate-900 dark:text-white">
                 Everything updates directly in your dashboard
               </h2>
-              <DashboardMockup />
+              <DashboardMockup locale={lang} />
             </div>
           </div>
         </section>
