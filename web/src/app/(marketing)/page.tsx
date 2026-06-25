@@ -6,6 +6,8 @@ import { VapiWebCallButton } from "@/components/vapi-web-call-button";
 import { AiPhoneFrame } from "@/components/marketing/ai-phone-frame";
 import { useTheme } from "next-themes";
 
+import { DashboardMockup } from "@/components/marketing/dashboard-mockup";
+
 const content = {
   en: {
     title: "The Classic",
@@ -112,7 +114,10 @@ Keep your responses concise, confident, and smooth.`;
               {t.desc}
             </p>
 
-            <div className="mt-16 flex flex-col items-center justify-center gap-6 sm:flex-row">
+            <div className="mt-16 flex flex-col items-center justify-center gap-12 lg:flex-row">
+              <div className="relative w-full max-w-xs overflow-hidden rounded-[2rem] shadow-2xl shadow-slate-900/20 ring-1 ring-slate-200 dark:shadow-black/50 dark:ring-slate-800">
+                <img src="/barber.png" alt="The Classic Barber" className="h-auto w-full object-cover aspect-[3/4]" />
+              </div>
               <AiPhoneFrame 
                 name="James" 
                 title="Barber AI Concierge"
@@ -159,6 +164,13 @@ Keep your responses concise, confident, and smooth.`;
                   <span className="mt-2" dangerouslySetInnerHTML={{ __html: t.test3.replace("haircut tomorrow", "<strong>haircut tomorrow</strong>").replace("coupe de cheveux demain", "<strong>coupe de cheveux demain</strong>") }} />
                 </li>
               </ul>
+            </div>
+
+            <div className="mt-32">
+              <h2 className="mb-12 font-display text-3xl font-semibold text-slate-900 dark:text-white">
+                Everything updates directly in your dashboard
+              </h2>
+              <DashboardMockup />
             </div>
           </div>
         </section>
