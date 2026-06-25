@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { PhoneCall, Scissors, CalendarDays, Moon, Sun, Languages } from "lucide-react";
 import { VapiWebCallButton } from "@/components/vapi-web-call-button";
-import { AiPhoneFrame } from "@/components/marketing/ai-phone-frame";
 import { useTheme } from "next-themes";
 
 import { DashboardMockup } from "@/components/marketing/dashboard-mockup";
@@ -114,32 +113,41 @@ Keep your responses concise, confident, and smooth.`;
               {t.desc}
             </p>
 
-            <div className="mt-16 flex flex-col items-center justify-center gap-12 lg:flex-row">
-              <div className="relative w-full max-w-xs overflow-hidden rounded-[2rem] shadow-2xl shadow-slate-900/20 ring-1 ring-slate-200 dark:shadow-black/50 dark:ring-slate-800">
-                <img src="/barber.png" alt="The Classic Barber" className="h-auto w-full object-cover aspect-[3/4]" />
+            <div className="mt-16 flex flex-col items-center justify-center">
+              <div className="relative w-full max-w-sm overflow-hidden rounded-[2rem] shadow-2xl shadow-slate-900/20 ring-1 ring-slate-200 dark:shadow-black/50 dark:ring-slate-800">
+                <img src="/barber.png" alt="The Classic Barber" className="h-[600px] w-full object-cover" />
+                
+                {/* Gradient Overlay for Text/Button Readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                
+                {/* Call Interface Overlay */}
+                <div className="absolute inset-x-0 bottom-0 flex flex-col items-center p-8 text-center">
+                  <h3 className="text-2xl font-bold text-white drop-shadow-md">James</h3>
+                  <p className="mb-6 text-sm font-medium text-white/90 drop-shadow-md">Barber AI Concierge</p>
+                  
+                  <div className="w-full">
+                    <VapiWebCallButton 
+                      assistantOverrides={{
+                        name: "The Classic Barbershop",
+                        services: [
+                          { id: "bb_haircut", name: "Classic Haircut", duration_minutes: 30, price_cents: 3500 },
+                          { id: "bb_fade", name: "Skin Fade", duration_minutes: 45, price_cents: 4500 },
+                          { id: "bb_shave", name: "Hot Towel Shave", duration_minutes: 30, price_cents: 4000 },
+                          { id: "bb_combo", name: "Haircut & Beard Trim Combo", duration_minutes: 60, price_cents: 6500 }
+                        ],
+                        voiceGreeting: t.greeting,
+                        systemPrompt: systemPrompt,
+                        voice: {
+                          provider: "openai",
+                          voiceId: "onyx"
+                        }
+                      }}
+                    />
+                  </div>
+                  
+                  <p className="mt-4 text-[11px] text-white/60">Microphone required to speak</p>
+                </div>
               </div>
-              <AiPhoneFrame 
-                name="James" 
-                title="Barber AI Concierge"
-              >
-                <VapiWebCallButton 
-                  assistantOverrides={{
-                    name: "The Classic Barbershop",
-                    services: [
-                      { id: "bb_haircut", name: "Classic Haircut", duration_minutes: 30, price_cents: 3500 },
-                      { id: "bb_fade", name: "Skin Fade", duration_minutes: 45, price_cents: 4500 },
-                      { id: "bb_shave", name: "Hot Towel Shave", duration_minutes: 30, price_cents: 4000 },
-                      { id: "bb_combo", name: "Haircut & Beard Trim Combo", duration_minutes: 60, price_cents: 6500 }
-                    ],
-                    voiceGreeting: t.greeting,
-                    systemPrompt: systemPrompt,
-                    voice: {
-                      provider: "openai",
-                      voiceId: "onyx"
-                    }
-                  }}
-                />
-              </AiPhoneFrame>
             </div>
 
             <div className="mx-auto mt-24 max-w-3xl border border-slate-200 bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none">
